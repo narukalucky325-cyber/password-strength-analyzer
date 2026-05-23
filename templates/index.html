@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CyberShield Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+      
+    <div class="animated-background"></div>
+
+<div class="cyber-icons">
+
+    <span>🔒</span>
+    <span>🛡️</span>
+    <span>💻</span>
+    <span>⚡</span>
+    <span>🌐</span>
+    <span>🔐</span>
+    <span>👨‍💻</span>
+    <span>🚨</span>
+
+</div>
+
+<canvas id="matrix"></canvas>
+
+    <div class="main-container">
+
+        <div class="left-panel">
+            <img src="https://images.unsplash.com/photo-1510511459019-5dda7724fd87?q=80&w=1200&auto=format&fit=crop"
+                class="cyber-image">
+        </div>
+
+        <div class="right-panel">
+
+            <div class="login-box">
+
+                <h1>CyberShield</h1>
+                <p class="subtitle">Cyber Security Password Analyzer</p>
+
+                <form action="/dashboard">
+
+                    <input type="text" placeholder="Username" required>
+                    <input type="password" name="password" id="login-password" placeholder="Password" required>
+
+                    <div class="strength-container">
+
+                        <div id="login-strength-bar"></div>
+
+                    </div>
+
+                    <p id="login-strength-text"></p>
+                    <button type="submit">Login</button>
+                    <a href="/signup">
+                        <button type="button">
+                            Create New Account
+                        </button>
+                    </a>
+                </form>
+
+                <div class="security-info">
+                    <h3>Security Features</h3>
+
+                    <ul>
+                        <li>SHA-256 Password Hashing</li>
+                        <li>Password Reuse Detection</li>
+                        <li>Weak Password Detection</li>
+                        <li>Cyber Security Dashboard</li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        const loginPasswordInput =
+            document.getElementById("login-password");
+
+        const loginStrengthBar =
+            document.getElementById("login-strength-bar");
+
+        const loginStrengthText =
+            document.getElementById("login-strength-text");
+
+        loginPasswordInput.addEventListener("keyup", function () {
+
+            let password = loginPasswordInput.value;
+
+            let strength = 0;
+
+            // LENGTH
+            if (password.length >= 8) {
+                strength++;
+            }
+
+            // UPPERCASE
+            if (/[A-Z]/.test(password)) {
+                strength++;
+            }
+
+            // LOWERCASE
+            if (/[a-z]/.test(password)) {
+                strength++;
+            }
+
+            // NUMBER
+            if (/[0-9]/.test(password)) {
+                strength++;
+            }
+
+            // SPECIAL CHARACTER
+            if (/[!@#$%^&*]/.test(password)) {
+                strength++;
+            }
+
+            // WEAK
+            if (strength <= 2) {
+
+                loginStrengthBar.style.width = "33%";
+                loginStrengthBar.style.backgroundColor = "red";
+
+                loginStrengthText.innerHTML =
+                    "Weak Password";
+
+                loginStrengthText.style.color = "red";
+            }
+
+            // MEDIUM
+            else if (strength <= 4) {
+
+                loginStrengthBar.style.width = "66%";
+                loginStrengthBar.style.backgroundColor = "orange";
+
+                loginStrengthText.innerHTML =
+                    "Medium Password";
+
+                loginStrengthText.style.color = "orange";
+            }
+
+            // STRONG
+            else {
+
+                loginStrengthBar.style.width = "100%";
+                loginStrengthBar.style.backgroundColor = "#00ff99";
+
+                loginStrengthText.innerHTML =
+                    "Strong Password";
+
+                loginStrengthText.style.color = "#00ff99";
+            }
+
+        });
+
+    </script>
+
+    <script>
+
+const canvas = document.getElementById('matrix');
+
+const ctx = canvas.getContext('2d');
+
+canvas.width = window.innerWidth;
+
+canvas.height = window.innerHeight;
+
+const letters =
+'01CYBERSECURITYHACKER';
+
+const fontSize = 14;
+
+const columns = canvas.width / fontSize;
+
+const drops = [];
+
+for(let x = 0; x < columns; x++){
+
+    drops[x] = 1;
+}
+
+function draw(){
+
+    ctx.fillStyle =
+    'rgba(0,0,0,0.05)';
+
+    ctx.fillRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+    ctx.fillStyle = '#00ff99';
+
+    ctx.font =
+    fontSize + 'px monospace';
+
+    for(let i = 0; i < drops.length; i++){
+
+        const text = letters[
+            Math.floor(
+                Math.random() *
+                letters.length
+            )
+        ];
+
+        ctx.fillText(
+            text,
+            i * fontSize,
+            drops[i] * fontSize
+        );
+
+        if(
+            drops[i] * fontSize >
+            canvas.height &&
+            Math.random() > 0.975
+        ){
+
+            drops[i] = 0;
+        }
+
+        drops[i]++;
+    }
+}
+
+setInterval(draw, 35);
+
+</script>
+</body>
+
+</html>

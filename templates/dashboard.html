@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cyber Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+
+        <div class="sidebar">
+
+            <h2>CyberShield</h2>
+
+            <ul>
+                <li>Dashboard</li>
+                <li>Password Security</li>
+                <li>Threat Monitor</li>
+                <li>Encryption</li>
+                <li>Reports</li>
+            </ul>
+
+        </div>
+        <div class="main-dashboard">
+
+            <div class="top-banner">
+                <h1>Password Strength Analyzer</h1>
+                <p>Secure Your Digital Identity</p>
+            </div>
+
+            <div class="dashboard-card">
+
+                <form method="POST">
+
+                    <input type="password" name="password" id="password" placeholder="Password" required>
+
+                    <div class="strength-container">
+
+                        <div id="strength-bar"></div>
+
+                    </div>
+
+                    <p id="strength-text"></p>
+
+                    <button type="submit">
+                        Analyze Password
+                    </button>
+
+                </form>
+
+                {% if result %}
+                <div class="result-box">
+                    {{ result }}
+                </div>
+
+                {% endif %}
+
+            </div>
+
+            <div class="stats-section">
+
+                <div class="stat-card">
+                    <h2>Encryption</h2>
+                    <p>SHA-256</p>
+                </div>
+
+                <div class="stat-card">
+                    <h2>Security Level</h2>
+                    <p>Advanced</p>
+                </div>
+                <div class="stat-card">
+                    <h2>Threat Detection</h2>
+                    <p>Enabled</p>
+                </div>
+
+            </div>
+
+            <div class="cyber-image-section">
+
+                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1200&auto=format&fit=crop">
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
