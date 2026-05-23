@@ -163,7 +163,7 @@ This project also includes:
 <br>
 <br>
 <h2> ⚙️ Installation Guide </h2> <br> <h3> Step 1 — Clone Repository </h3> <br>
-git clone https://github.com/narukalucky325-cyber/password-strength-analyser.git
+git clone https://github.com/narukalucky325-cyber/password-strength-analyzer.git
 <br>
 <h3> Step 2 — Open Project Folder </h3> <br>
 cd CyberShield-Password-Analyzer
