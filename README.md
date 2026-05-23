@@ -161,21 +161,17 @@ This project also includes:
 </h2>
 
 <br>
-<br>
-<h2> ⚙️ Installation Guide </h2> <br> <h3> Step 1 — Clone Repository </h3> <br>
+<br> <h3>— Clone Repository </h3> <br>
 git clone https://github.com/narukalucky325-cyber/password-strength-analyzer.git
 <br>
 <h3> — Run Project </h3> <br>
 python main.py
 <br>
 <h2> 🌐 Open Website </h2> <br>
-
 Open browser:
-
 <br>
 http://127.0.0.1:5000
 <br>
-
 
 <h2> 🔥 Cybersecurity Concepts Learned </h2> <br>
 <br>
